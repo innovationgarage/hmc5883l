@@ -100,15 +100,15 @@ def main():
             if "=" in arg:
                 arg, value = arg.split("=", 1)
             kws[arg] = value
-         else:
+        else:
             args.append(arg)
 
     if "help" in kws:
         print("Usage: hmc5883l " + " ".join("--%s=%s" % item for item in kws.items()))
         sys.exit(1)
 
-    kws["port"] = int(kws["port"])
-    kws["address"] = int(kws["address"])
+    kws["port"] = int(kws["port"], 0)
+    kws["address"] = int(kws["address"], 0)
     kws["gauss"] = float(kws["gauss"])
     kws["declination"] = [float(x) for x in kws["declination"].split(",")]
 
